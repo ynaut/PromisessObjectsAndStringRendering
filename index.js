@@ -1,14 +1,37 @@
-;(function(w, $){
+// The goal is render a github informations on a page with:
+// Promises, Map and Reduce.
 
-  // Expecting
-  new GitHubUser('ideabile')
+function GitHubUser (username) {
+    // Fill this
+}
+
+GitHubUser.prototype.getUserInformation = function () {
+    // Fill this
+};
+
+GitHubUser.prototype.getRepos = function () {
+    // Fill this
+}
+
+GitHubUser.prototype.render = function () {
+    // Here return a string, be fancy and use map && reduce
+}
+
+function Render($element, html){
+    // Fill this
+}
+
+
+// Expecting
+let gitUser = new GitHubUser('ideabile');
+
+gitUser
     .getUserInformations()
-    .done(function ( informations ){
-    this.user = informations;
-      return this.getRepos();
-    }).done(function( repos ){
-      this.repos = repos;
-      Render(this.render());
+    .then(function(informations){
+        this.user = informations;
+        return this.getRepos();
+    })
+    .then(function(repos) {
+        this.repos = repos;
+        Render('.githubView', this.render());
     });
-
-})(window, jQuery);
